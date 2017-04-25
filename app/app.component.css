@@ -1,0 +1,12 @@
+nav a {
+    padding : 5px;
+    background : #3FC7C7;
+    text-decoration : none;
+    color : white;
+}
+nav a:hover {
+    padding : 5px;
+    background : #BFDCD8;
+    text-decoration : none;
+    color : white;
+}

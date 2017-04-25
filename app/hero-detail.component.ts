@@ -17,15 +17,15 @@ export class HeroDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private location: Location
     ){}
-  
-ngOnInit(): void {
-    this.route
-        .params
-        .switchMap((params:Params) => this.heroService.getHero(+params['id']))
-        .subscribe(hero=>this.hero = hero);
-}
-goBack(): void {
-    this.location.back();
-}
+    hero:Hero[];  
+    ngOnInit(): void {
+        this.route
+            .params
+            .switchMap((params:Params) => this.heroService.getHero(+params['id']))
+            .subscribe(hero=>this.hero = hero);
+    }
+    goBack(): void {
+        this.location.back();
+    }
     @Input() hero: Hero[];
 }

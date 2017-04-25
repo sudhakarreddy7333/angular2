@@ -1,0 +1,18 @@
+.hero {
+    width : 200px;
+    background : #BFDCD8;
+    margin-bottom : 5px;
+    height : 30px;
+    list-style-type : none;
+    line-height : 30px;
+    padding-left  : 1px;
+}
+.hero:hover {
+    background : #3FC7C7;
+    cursor : pointer;
+}
+span:nth-child(1) {
+    background : #1B7E95;
+    padding : 6px;
+    color : white;
+}

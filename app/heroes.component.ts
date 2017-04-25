@@ -9,45 +9,21 @@ it is similar to ng-controller directive in angularJs 1.x
 import { Component, OnInit } from '@angular/core';
 import { Hero } from './app.hero';
 import { HeroService } from './hero.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'my-heroes',
-    template: `
-            <h1>{{title}}</h1>
-            <ul>
-                <li class = "hero" (click) = 'onSelectHero(hero)' *ngFor = "let hero of heroes">
-                    <span>{{ hero.id }}</span>
-                    <span>{{hero.name}}</span>
-                </li>
-            </ul>
-            <hero-details [hero] = "selectedHero"></hero-details>
-              `,
-    styles : [`
-            .hero {
-                width : 200px;
-                background : #BFDCD8;
-                margin-bottom : 5px;
-                height : 30px;
-                list-style-type : none;
-                line-height : 30px;
-                padding-left  : 1px;
-            }
-            .hero:hover {
-                background : #3FC7C7;
-                cursor : pointer;
-            }
-            span:nth-child(1) {
-                background : #1B7E95;
-                padding : 6px;
-                color : white;
-            }
-            `]
+    templateUrl: './app/heroes.component.html',
+    styleUrls : ['./app/heroes.component.css']
 })
 //AppComponent is similar to controller function in angular
 export class HeroesComponent implements OnInit {
-    constructor(private heroService: HeroService ){}
+    constructor(
+    private heroService: HeroService, 
+    private router: Router
+    ){}
     title = 'Tour of heroes';
-heroes: Hero[];
+    heroes: Hero[];
     getHeroes(): void {
         this.heroService.getHeroes().then(heroes => this.heroes = heroes);
     };
@@ -57,5 +33,8 @@ heroes: Hero[];
     selectedHero: Hero;
     onSelectHero(hero: Hero): void {
         this.selectedHero = hero;
-    } 
+    };
+    goToDetail(): void {
+        this.router.navigate(['/detail',this.selectedHero.id]);
+    }
 };
